@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>3D 7-Hour Timer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: radial-gradient(circle at top, #0f2027, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+/* ===== SCENE ===== */
+.scene {
+    width: 260px;
+    height: 260px;
+    perspective: 900px;
+}
+
+/* ===== CUBE ===== */
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 12s infinite linear;
+}
+
+/* ===== CUBE FACES ===== */
+.face {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 600;
+    color: #00ffff;
+    text-shadow: 0 0 15px #00ffff;
+}
+
+/* ===== FACE POSITIONS ===== */
+.front  { transform: translateZ(130px); }
+.back   { transform: rotateY(180deg) translateZ(130px); }
+.right  { transform: rotateY(90deg) translateZ(130px); }
+.left   { transform: rotateY(-90deg) translateZ(130px); }
+.top    { transform: rotateX(90deg) translateZ(130px); }
+.bottom { transform: rotateX(-90deg) translateZ(130px); }
+
+/* ===== ROTATION ===== */
+@keyframes rotate {
+    from { transform: rotateX(0deg) rotateY(0deg); }
+    to   { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* ===== TITLE ===== */
+.title {
+    position: absolute;
+    top: 40px;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: #00ffff;
+    text-shadow: 0 0 20px #00ffff;
+}
+
+/* ===== SUBTEXT ===== */
+.sub {
+    position: absolute;
+    bottom: 30px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">3D 7-HOUR TIMER</div>
+
+<div class="scene">
+    <div class="cube">
+        <div class="face front"  id="t1">07:00:00</div>
+        <div class="face back"   id="t2">07:00:00</div>
+        <div class="face right"  id="t3">07:00:00</div>
+        <div class="face left"   id="t4">07:00:00</div>
+        <div class="face top"    id="t5">07:00:00</div>
+        <div class="face bottom" id="t6">07:00:00</div>
+    </div>
+</div>
+
+<div class="sub">Pure HTML • CSS 3D • JavaScript</div>
+
+<script>
+/* ===== 7 HOUR COUNTDOWN ===== */
+let totalSeconds = 7 * 60 * 60;
+
+function updateTimer() {
+    if (totalSeconds < 0) return;
+
+    let hours = Math.floor(totalSeconds / 3600);
+    let minutes = Math.floor((totalSeconds % 3600) / 60);
+    let seconds = totalSeconds % 60;
+
+    let time =
+        String(hours).padStart(2, '0') + ":" +
+        String(minutes).padStart(2, '0') + ":" +
+        String(seconds).padStart(2, '0');
+
+    // Update all cube faces
+    for (let i = 1; i <= 6; i++) {
+        document.getElementById("t" + i).innerText = time;
+    }
+
+    totalSeconds--;
+}
+
+updateTimer();
+setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>
