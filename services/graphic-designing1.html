@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Designing Services - Bogati Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4e73df;
+            --primary-dark: #2e59d9;
+            --secondary: #1a1a2e;
+            --text: #4a4a4a;
+            --light: #f8f9fc;
+            --success: #1cc88a;
+            --info: #36b9cc;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --dark: #5a5c69;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f8f9fc;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 50px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 220px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(78, 115, 223, 0.1);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/graphic-design-header.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 180px 50px 100px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Service Overview Section */
+        .service-overview {
+            padding: 100px 0;
+        }
+
+        .overview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .overview-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .overview-image img {
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .overview-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .overview-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary);
+            border-radius: 15px;
+            top: 15px;
+            left: 15px;
+            z-index: -1;
+        }
+
+        .overview-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .overview-content h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .overview-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .overview-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            color: var(--secondary);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            top: 0;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 100px 0;
+        }
+
+        .process-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-line {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            width: 4px;
+            height: calc(100% - 120px);
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .process-steps {
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step {
+            display: flex;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .process-number {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .process-content {
+            width: 45%;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .process-step:hover .process-content {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .process-content h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .process-content p {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 100px 0;
+            background: #f8f9fc;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-filter {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .portfolio-filter.active, .portfolio-filter:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-category {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-link {
+            color: white;
+            background: var(--primary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        .portfolio-link:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+        }
+
+        .tool-item {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .tool-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .tool-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+
+        .tool-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .tool-name {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 1;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-header {
+            background: var(--primary);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .pricing-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pricing-duration {
+            font-size: 1rem;
+        }
+
+        .pricing-features {
+            padding: 30px;
+        }
+
+        .pricing-features ul {
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+
+        .pricing-features .not-included {
+            color: #ccc;
+        }
+
+        .pricing-features .not-included i {
+            color: #ccc;
+        }
+
+        .pricing-action {
+            text-align: center;
+            padding-bottom: 30px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background: #f8f9fc;
+        }
+
+        .testimonials-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .testimonial-item.active {
+            display: block;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '\201C';
+            font-size: 4rem;
+            color: var(--primary);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--primary);
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .testimonial-nav button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .testimonial-nav button:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(78, 115, 223, 0.05);
+        }
+
+        .faq-question h3 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px;
+        }
+
+        .faq-item.active .faq-question {
+            background: rgba(78, 115, 223, 0.05);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding: 0 20px 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 50px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 80px 50px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-col i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .newsletter {
+            margin-top: 30px;
+        }
+
+        .newsletter h4 {
+            margin-bottom: 15px;
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+            
+            .navbar.scrolled {
+                padding: 10px 30px;
+            }
+            
+            .section {
+                padding: 80px 30px;
+            }
+            
+            .page-header {
+                padding: 150px 30px 80px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .process-line {
+                left: 30px;
+                transform: none;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                padding-left: 60px;
+            }
+            
+            .process-step:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .process-number {
+                left: 30px;
+                transform: none;
+            }
+            
+            .process-content {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar.scrolled {
+                padding: 10px 20px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 30px 30px;
+                transition: 0.4s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                max-height: 500px;
+            }
+            
+            .dropdown-menu a {
+                padding: 10px 15px;
+            }
+            
+            .menu-btn {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .menu-btn.active i::before {
+                content: '\f00d';
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .page-header {
+                padding: 120px 20px 60px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .overview-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-image {
+                margin: 0 auto 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="index.html" class="logo">
+        <i class="fas fa-microchip logo-icon"></i>
+        Bogati<span>Tech</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+            <a href="services.html" class="active">Services <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="services.html#website-development">Website Development</a></li>
+                <li><a href="graphic-designing.html" class="active">Graphic Designing</a></li>
+                <li><a href="services.html#business-consulting">Business Consulting</a></li>
+                <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                <li><a href="services.html#photography-videography">Photography & Videography</a></li>
+                <li><a href="services.html#app-development">App Development</a></li>
+            </ul>
+        </li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <h1>Graphic Designing</h1>
+    <p>Creative designs that elevate your brand identity</p>
+    <a href="contact.html" class="btn btn-large">Get a Free Consultation</a>
+</section>
+
+<!-- Service Overview -->
+<section class="service-overview">
+    <div class="container">
+        <div class="overview-container">
+            <div class="overview-image">
+                <img src="https://via.placeholder.com/600x400" alt="Graphic Designing">
+            </div>
+            <div class="overview-content">
+                <h2>Professional Graphic Design Services</h2>
+                <p>At Bogati Tech, we offer comprehensive graphic design services that help businesses establish a strong visual identity. Our team of talented designers combines creativity with strategic thinking to create designs that not only look stunning but also effectively communicate your brand message.</p>
+                <p>From logo design and brand identity to marketing materials and social media graphics, we create visually compelling designs that resonate with your target audience and help your business stand out in a competitive market.</p>
+                
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">750+</div>
+                        <div class="stat-text">Design Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-text">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-text">Design Awards</div>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="btn">Get a Free Quote</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Graphic Design Services</h2>
+            <p>We offer a wide range of graphic design solutions</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Logo Design</h3>
+                <p>We create unique, memorable logos that represent your brand's personality and values. Our logos are designed to be versatile, scalable, and timeless.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Brand Identity</h3>
+                <p>We develop comprehensive brand identity systems including color schemes, typography, and brand guidelines that ensure consistency across all touchpoints.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-print"></i>
+                </div>
+                <h3>Print Design</h3>
+                <p>We design business cards, brochures, flyers, posters, and other print materials that effectively communicate your message and reinforce your brand.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-ad"></i>
+                </div>
+                <h3>Marketing Materials</h3>
+                <p>We create eye-catching designs for your marketing campaigns across various channels, helping you attract attention and drive engagement.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Social Media Graphics</h3>
+                <p>We design engaging graphics for your social media platforms to boost your online presence and increase follower engagement and interaction.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-pencil-ruler"></i>
+                </div>
+                <h3>Illustration</h3>
+                <p>We create custom illustrations that add a unique touch to your brand and marketing materials, helping you stand out from competitors.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Publication Design</h3>
+                <p>We design magazines, books, annual reports, and catalogs with layouts that are both visually appealing and easy to navigate.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <h3>Packaging Design</h3>
+                <p>We create packaging designs that protect your product, attract attention on shelves, and communicate your brand's value proposition.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="process-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Design Process</h2>
+            <p>A systematic approach to creating exceptional designs</p>
+        </div>
+        
+        <div class="process-container">
+            <div class="process-line"></div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h3>Discovery</h3>
+                        <p>We start by understanding your business, target audience, design preferences, and project requirements. This phase involves in-depth discussions to gather all necessary information to create designs that align with your vision and goals.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3>Research</h3>
+                        <p>We conduct research on your industry, competitors, and target audience to inform our design strategy. This helps us understand the market landscape and identify opportunities to make your brand stand out.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h3>Concept Development</h3>
+                        <p>We develop initial design concepts based on our research and your requirements. This phase involves brainstorming, sketching, and creating preliminary designs that capture the essence of your brand.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3>Refinement</h3>
+                        <p>Based on your feedback, we refine the chosen concept to perfection. We make adjustments to colors, typography, layout, and other design elements to ensure the final design meets your expectations.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <div class="process-content">
+                        <h3>Finalization</h3>
+                        <p>We finalize the design and prepare all necessary file formats for your use. This includes high-resolution files for print and web-optimized files for digital use.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">6</div>
+                    <div class="process-content">
+                        <h3>Delivery</h3>
+                        <p>We deliver the final design files along with guidelines for their use. We also provide support to ensure you can effectively implement the designs across various platforms and materials.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="portfolio-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Design Portfolio</h2>
+            <p>Some of our recent graphic design projects</p>
+        </div>
+        
+        <div class="portfolio-filters">
+            <div class="portfolio-filter active" data-filter="all">All</div>
+            <div class="portfolio-filter" data-filter="logo">Logo Design</div>
+            <div class="portfolio-filter" data-filter="branding">Brand Identity</div>
+            <div class="portfolio-filter" data-filter="print">Print Design</div>
+            <div class="portfolio-filter" data-filter="social">Social Media</div>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="logo">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Logo Design">
+                </div>
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Everest Coffee</h3>
+                    <p class="portfolio-category">Logo Design</p>
+                    <a href="#" class="portfolio-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="branding">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Brand Identity">
+                </div>
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Himalayan Trekking</h3>
+                    <p class="portfolio-category">Brand Identity</p>
+                    <a href="#" class="portfolio-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="print">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Print Design">
+                </div>
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Nepal Food Festival</h3>
+                    <p class="portfolio-category">Event Brochure</p>
+                    <a href="#" class="portfolio-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="social">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Social Media Graphics">
+                </div>
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Kathmandu Boutique</h3>
+                    <p class="portfolio-category">Social Media Campaign</p>
+                    <a href="#" class="portfolio-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="logo">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Logo Design">
+                </div>
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Mountain Finance</h3>
+                    <p class="portfolio-category">Logo Design</p>
+                    <a href="#" class="portfolio-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="branding">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Brand Identity">
+                </div>
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Organic Nepal</h3>
+                    <p class="portfolio-category">Brand Identity</p>
+                    <a href="#" class="portfolio-link">View Project</a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="projects.html" class="btn">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Tools Section -->
+<section class="tools-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Design Tools We Use</h2>
+            <p>We use industry-standard tools to create exceptional designs</p>
+        </div>
+        
+        <div class="tools-grid">
+            <div class="tool-item">
+                <div class="tool-icon">
+                    <img src="https://via.placeholder.com/80x80" alt="Adobe Photoshop">
+                </div>
+                <div class="tool-name">Adobe Photoshop</div>
+            </div>
+            
+            <div class="tool-item">
+                <div class="tool-icon">
+                    <img src="https://via.placeholder.com/80x80" alt="Adobe Illustrator">
+                </div>
+                <div class="tool-name">Adobe Illustrator</div>
+            </div>
+            
+            <div class="tool-item">
+                <div class="tool-icon">
+                    <img src="https://via.placeholder.com/80x80" alt="Adobe InDesign">
+                </div>
+                <div class="tool-name">Adobe InDesign</div>
+            </div>
+            
+            <div class="tool-item">
+                <div class="tool-icon">
+                    <img src="https://via.placeholder.com/80x80" alt="Adobe XD">
+                </div>
+                <div class="tool-name">Adobe XD</div>
+            </div>
+            
+            <div class="tool-item">
+                <div class="tool-icon">
+                    <img src="https://via.placeholder.com/80x80" alt="Figma">
+                </div>
+                <div class="tool-name">Figma</div>
+            </div>
+            
+            <div class="tool-item">
+                <div class="tool-icon">
+                    <img src="https://via.placeholder.com/80x80" alt="Sketch">
+                </div>
+                <div class="tool-name">Sketch</div>
+            </div>
+            
+            <div class="tool-item">
+                <div class="tool-icon">
+                    <img src="https://via.placeholder.com/80x80" alt="Procreate">
+                </div>
+                <div class="tool-name">Procreate</div>
+            </div>
+            
+            <div class="tool-item">
+                <div class="tool-icon">
+                    <img src="https://via.placeholder.com/80x80" alt="Affinity Designer">
+                </div>
+                <div class="tool-name">Affinity Designer</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="pricing-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Graphic Design Packages</h2>
+            <p>Choose the package that best suits your needs</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Logo Design</h3>
+                    <div class="pricing-price">$299</div>
+                    <div class="pricing-duration">One-time payment</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 3 Initial Concepts</li>
+                        <li><i class="fas fa-check-circle"></i> 3 Revision Rounds</li>
+                        <li><i class="fas fa-check-circle"></i> High-Resolution Files</li>
+                        <li><i class="fas fa-check-circle"></i> Vector Source Files</li>
+                        <li><i class="fas fa-check-circle"></i> Full Copyright Ownership</li>
+                        <li class="not-included"><i class="fas fa-times-circle"></i> Brand Guidelines</li>
+                        <li class="not-included"><i class="fas fa-times-circle"></i> Business Card Design</li>
+                        <li class="not-included"><i class="fas fa-times-circle"></i> Social Media Kit</li>
+                    </ul>
+                    <div class="pricing-action">
+                        <a href="contact.html" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-card popular">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Brand Identity</h3>
+                    <div class="pricing-price">$599</div>
+                    <div class="pricing-duration">One-time payment</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Logo Design (3 Concepts)</li>
+                        <li><i class="fas fa-check-circle"></i> 3 Revision Rounds</li>
+                        <li><i class="fas fa-check-circle"></i> Business Card Design</li>
+                        <li><i class="fas fa-check-circle"></i> Letterhead Design</li>
+                        <li><i class="fas fa-check-circle"></i> Email Signature</li>
+                        <li><i class="fas fa-check-circle"></i> Brand Guidelines</li>
+                        <li><i class="fas fa-check-circle"></i> All Source Files</li>
+                        <li class="not-included"><i class="fas fa-times-circle"></i> Social Media Kit</li>
+                    </ul>
+                    <div class="pricing-action">
+                        <a href="contact.html" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Complete Package</h3>
+                    <div class="pricing-price">$999</div>
+                    <div class="pricing-duration">One-time payment</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Logo Design (5 Concepts)</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited Revisions</li>
+                        <li><i class="fas fa-check-circle"></i> Business Card Design</li>
+                        <li><i class="fas fa-check-circle"></i> Letterhead & Envelope</li>
+                        <li><i class="fas fa-check-circle"></i> Email Signature</li>
+                        <li><i class="fas fa-check-circle"></i> Comprehensive Brand Guidelines</li>
+                        <li><i class="fas fa-check-circle"></i> Social Media Kit</li>
+                        <li><i class="fas fa-check-circle"></i> All Source Files</li>
+                    </ul>
+                    <div class="pricing-action">
+                        <a href="contact.html" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Client Testimonials</h2>
+            <p>What our clients say about our graphic design services</p>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-item active">
+                <div class="testimonial-text">
+                    <p>Bogati Tech created a stunning logo and brand identity for our coffee shop. Their team took the time to understand our vision and values, and translated them into a visual identity that perfectly represents our brand. We've received countless compliments on our logo and branding materials.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://via.placeholder.com/100x100" alt="Ramesh Sharma">
+                    </div>
+                    <div class="author-info">
+                        <h4>Ramesh Sharma</h4>
+                        <p>Owner, Everest Coffee</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>We hired Bogati Tech to design our event brochure and marketing materials for the Nepal Food Festival. The designs were not only visually appealing but also effectively communicated the essence of our event. The materials helped us attract a record number of attendees this year.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://via.placeholder.com/100x100" alt="Sita Thapa">
+                    </div>
+                    <div class="author-info">
+                        <h4>Sita Thapa</h4>
+                        <p>Event Manager, Nepal Food Festival</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>The social media graphics created by Bogati Tech have transformed our online presence. Their designs are eye-catching, on-brand, and have significantly increased our engagement rates. Working with their team has been a pleasure - they're responsive, creative, and always deliver on time.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://via.placeholder.com/100x100" alt="Anita Gurung">
+                    </div>
+                    <div class="author-info">
+                        <h4>Anita Gurung</h4>
+                        <p>Marketing Director, Kathmandu Boutique</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-nav">
+                <button id="prev-testimonial"><i class="fas fa-arrow-left"></i></button>
+                <button id="next-testimonial"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+            <p>Common questions about our graphic design services</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How long does it take to design a logo?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The logo design process typically takes 1-2 weeks, depending on the complexity of the project and the number of revision rounds. We'll provide you with a detailed timeline during our initial consultation based on your specific requirements and project scope.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What file formats will I receive for my designs?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We provide all designs in various formats suitable for both print and digital use, including AI, EPS, PDF, JPG, and PNG. For logos, we also provide vector files that can be scaled to any size without losing quality. If you need specific file formats for your project, we're happy to accommodate your requirements.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do I own the copyright to the designs?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, once the project is completed and final payment is made, you own full copyright to all the designs we create for you. You can use them however you wish without any restrictions. We believe that you should have complete ownership of the designs you pay for.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How many revision rounds are included?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The number of revision rounds depends on the package you choose. Our basic packages include 3 revision rounds, while our premium packages offer unlimited revisions until you're completely satisfied with the design. We're committed to ensuring that the final design meets your expectations.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What information do you need to start a design project?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>To start a design project, we need information about your business, target audience, design preferences, and project requirements. We'll send you a detailed questionnaire to gather this information, an  and project requirements. We'll send you a detailed questionnaire to gather this information, and we may also schedule a discovery call to discuss your project in more detail. The more information you provide, the better we can understand your vision and create designs that meet your needs.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can you work with existing brand elements?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we can work with your existing brand elements and build upon them. Whether you need to refresh your logo, expand your brand identity, or create new marketing materials that align with your current branding, we can help. We'll ensure that all new designs are consistent with your existing brand while bringing fresh creativity to the project.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Elevate Your Brand?</h2>
+            <p>Let's collaborate to create stunning designs that capture your brand's essence and resonate with your audience.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-large"><i class="fas fa-envelope"></i> Get a Free Quote</a>
+                <a href="tel:+9779800000000" class="btn btn-large btn-outline"><i class="fas fa-phone"></i> Call Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Bogati Tech</h3>
+            <p>Transforming ideas into digital reality with innovative solutions for your business.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h3>Our Services</h3>
+            <ul class="footer-links">
+                <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                <li><a href="services.html#photography-videography">Photography & Videography</a></li>
+                <li><a href="services.html#business-consulting">Business Consulting</a></li>
+                <li><a href="services.html#website-development">Website Development</a></li>
+                <li><a href="services.html#app-development">App Development</a></li>
+                <li><a href="graphic-designing.html">Graphic Designing</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="careers.html">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Contact Info</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Thamel, Kathmandu, Nepal</p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:info@bogatitech.com">info@bogatitech.com</a></p>
+            <p><i class="fas fa-phone"></i> <a href="tel:+9779800000000">+977 9800000000</a></p>
+            <div class="newsletter">
+                <h4>Subscribe to our newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2023 Bogati Tech. All Rights Reserved.</p>
+        <ul class="footer-bottom-links">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="sitemap.html">Sitemap</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+<!-- JavaScript -->
+<script>
+    // Navbar Toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Dropdown Toggle for Mobile
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+        if (window.scrollY > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+
+    // Back to Top Button Click
+    const backToTop = document.querySelector('.back-to-top');
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Portfolio Filters
+    const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    portfolioFilters.forEach(filter => {
+        filter.addEventListener('click', () => {
+            const filterValue = filter.getAttribute('data-filter');
+            
+            // Remove active class from all filters
+            portfolioFilters.forEach(filter => filter.classList.remove('active'));
+            
+            // Add active class to clicked filter
+            filter.classList.add('active');
+            
+            // Filter portfolio items
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Testimonial Slider
+    const testimonials = document.querySelectorAll('.testimonial-item');
+    const prevBtn = document.getElementById('prev-testimonial');
+    const nextBtn = document.getElementById('next-testimonial');
+    let currentTestimonial = 0;
+
+    function showTestimonial(index) {
+        testimonials.forEach((testimonial, i) => {
+            if (i === index) {
+                testimonial.classList.add('active');
+            } else {
+                testimonial.classList.remove('active');
+            }
+        });
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentTestimonial--;
+        if (currentTestimonial < 0) {
+            currentTestimonial = testimonials.length - 1;
+        }
+        showTestimonial(currentTestimonial);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentTestimonial++;
+        if (currentTestimonial >= testimonials.length) {
+            currentTestimonial = 0;
+        }
+        showTestimonial(currentTestimonial);
+    });
+
+    // Auto-rotate testimonials
+    setInterval(() => {
+        currentTestimonial++;
+        if (currentTestimonial >= testimonials.length) {
+            currentTestimonial = 0;
+        }
+        showTestimonial(currentTestimonial);
+    }, 8000);
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector('i');
+            
+            // Toggle active class
+            faqItem.classList.toggle('active');
+            
+            // Toggle icon
+            if (faqItem.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        });
+    });
+
+    // Newsletter Form Submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to a server
+            alert('Thank you for subscribing to our newsletter!');
+            
+            // Reset form
+            newsletterForm.reset();
+        });
+    }
+</script>
+</body>
+</html>

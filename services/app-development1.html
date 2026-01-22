@@ -1,0 +1,2688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Development Services - Bogati Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4e73df;
+            --primary-dark: #2e59d9;
+            --secondary: #1a1a2e;
+            --text: #4a4a4a;
+            --light: #f8f9fc;
+            --success: #1cc88a;
+            --info: #36b9cc;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --dark: #5a5c69;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f8f9fc;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 50px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 220px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(78, 115, 223, 0.1);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/app-development-header.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 180px 50px 100px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Service Overview Section */
+        .service-overview {
+            padding: 100px 0;
+        }
+
+        .overview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .overview-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .overview-image img {
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .overview-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .overview-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary);
+            border-radius: 15px;
+            top: 15px;
+            left: 15px;
+            z-index: -1;
+        }
+
+        .overview-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .overview-content h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .overview-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .overview-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            color: var(--secondary);
+        }
+
+        /* App Types Section */
+        .app-types-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .app-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .app-type-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-type-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            top: 0;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .app-type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .app-type-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .app-type-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .app-type-card h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .app-type-card p {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .app-features {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .app-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .app-features i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 100px 0;
+        }
+
+        .process-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-line {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            width: 4px;
+            height: calc(100% - 120px);
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .process-steps {
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step {
+            display: flex;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .process-number {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .process-content {
+            width: 45%;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .process-step:hover .process-content {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .process-content h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .process-content p {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Technologies Section */
+        .technologies-section {
+            padding: 100px 0;
+            background: #f8f9fc;
+        }
+
+        .tech-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .tech-tab {
+            padding: 12px 25px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .tech-tab.active, .tech-tab:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tech-content {
+            display: none;
+        }
+
+        .tech-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+        }
+
+        .tech-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .tech-name {
+            font-size: 1rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 100px 0;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-filter {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .portfolio-filter.active, .portfolio-filter:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay a {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 0 10px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .portfolio-overlay a:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .portfolio-overlay a:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .portfolio-overlay a:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .portfolio-category {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-description {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .portfolio-tag {
+            padding: 5px 15px;
+            background: #f0f2f5;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-social {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+            background: rgba(78, 115, 223, 0.9);
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-social {
+            bottom: 0;
+        }
+
+        .member-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .member-social a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .member-info {
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .member-position {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .member-bio {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 1;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-header {
+            background: var(--primary);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .pricing-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pricing-duration {
+            font-size: 1rem;
+        }
+
+        .pricing-features {
+            padding: 30px;
+        }
+
+        .pricing-features ul {
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+
+        .pricing-features .not-included {
+            color: #ccc;
+        }
+
+        .pricing-features .not-included i {
+            color: #ccc;
+        }
+
+        .pricing-action {
+            text-align: center;
+            padding-bottom: 30px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background: #f8f9fc;
+        }
+
+        .testimonials-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .testimonial-item.active {
+            display: block;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '\201C';
+            font-size: 4rem;
+            color: var(--primary);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--primary);
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .testimonial-nav button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .testimonial-nav button:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(78, 115, 223, 0.05);
+        }
+
+        .faq-question h3 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px;
+        }
+
+        .faq-item.active .faq-question {
+            background: rgba(78, 115, 223, 0.05);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding: 0 20px 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 50px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 80px 50px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-col i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .newsletter {
+            margin-top: 30px;
+        }
+
+        .newsletter h4 {
+            margin-bottom: 15px;
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+            
+            .navbar.scrolled {
+                padding: 10px 30px;
+            }
+            
+            .section {
+                padding: 80px 30px;
+            }
+            
+            .page-header {
+                padding: 150px 30px 80px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .process-line {
+                left: 30px;
+                transform: none;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                padding-left: 60px;
+            }
+            
+            .process-step:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .process-number {
+                left: 30px;
+                transform: none;
+            }
+            
+            .process-content {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar.scrolled {
+                padding: 10px 20px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 30px 30px;
+                transition: 0.4s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                max-height: 500px;
+            }
+            
+            .dropdown-menu a {
+                padding: 10px 15px;
+            }
+            
+            .menu-btn {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .menu-btn.active i::before {
+                content: '\f00d';
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .page-header {
+                padding: 120px 20px 60px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .overview-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-image {
+                margin: 0 auto 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="index.html" class="logo">
+        <i class="fas fa-microchip logo-icon"></i>
+        Bogati<span>Tech</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+            <a href="services.html" class="active">Services <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="services.html#website-development">Website Development</a></li>
+                <li><a href="graphic-designing.html">Graphic Designing</a></li>
+                <li><a href="business-consulting.html">Business Consulting</a></li>
+                <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                <li><a href="services.html#photography-videography">Photography & Videography</a></li>
+                <li><a href="app-development.html" class="active">App Development</a></li>
+            </ul>
+        </li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <h1>App Development</h1>
+    <p>Custom mobile applications that transform your business</p>
+    <a href="contact.html" class="btn btn-large">Get a Free Consultation</a>
+</section>
+
+<!-- Service Overview -->
+<section class="service-overview">
+    <div class="container">
+        <div class="overview-container">
+            <div class="overview-image">
+                <img src="https://via.placeholder.com/600x400" alt="App Development">
+            </div>
+            <div class="overview-content">
+                <h2>Professional App Development Services</h2>
+                <p>At Bogati Tech, we specialize in creating custom mobile applications that help businesses connect with their customers, streamline operations, and drive growth. Our team of experienced developers combines technical expertise with creative problem-solving to deliver high-quality apps that meet your specific needs.</p>
+                <p>Whether you need a native iOS or Android app, a cross-platform solution, or a progressive web app, we have the skills and experience to bring your vision to life. We focus on creating intuitive user experiences, robust functionality, and scalable architecture to ensure your app's success.</p>
+                
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-text">Apps Developed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-text">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-text">Industries Served</div>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="btn">Get a Free Consultation</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- App Types Section -->
+<section class="app-types-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Types of Apps We Develop</h2>
+            <p>Tailored solutions for every platform and business need</p>
+        </div>
+        
+        <div class="app-types-grid">
+            <div class="app-type-card">
+                <div class="app-type-icon">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3>iOS Apps</h3>
+                <p>Native applications designed specifically for Apple devices, offering the best performance and user experience on iPhones and iPads.</p>
+                <ul class="app-features">
+                    <li><i class="fas fa-check-circle"></i> Swift & Objective-C development</li>
+                    <li><i class="fas fa-check-circle"></i> Apple Human Interface Guidelines</li>
+                    <li><i class="fas fa-check-circle"></i> App Store optimization</li>
+                    <li><i class="fas fa-check-circle"></i> iOS-specific features integration</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="app-type-card">
+                <div class="app-type-icon">
+                    <i class="fab fa-android"></i>
+                </div>
+                <h3>Android Apps</h3>
+                <p>Native applications built for the Android ecosystem, ensuring optimal performance and reach across a wide range of devices.</p>
+                <ul class="app-features">
+                    <li><i class="fas fa-check-circle"></i> Kotlin & Java development</li>
+                    <li><i class="fas fa-check-circle"></i> Material Design implementation</li>
+                    <li><i class="fas fa-check-circle"></i> Google Play Store optimization</li>
+                    <li><i class="fas fa-check-circle"></i> Android-specific features integration</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="app-type-card">
+                <div class="app-type-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Cross-Platform Apps</h3>
+                <p>Applications that work on both iOS and Android from a single codebase, reducing development time and maintenance costs.</p>
+                <ul class="app-features">
+                    <li><i class="fas fa-check-circle"></i> React Native development</li>
+                    <li><i class="fas fa-check-circle"></i> Flutter development</li>
+                    <li><i class="fas fa-check-circle"></i> Consistent experience across platforms</li>
+                    <li><i class="fas fa-check-circle"></i> Cost-effective development</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="app-type-card">
+                <div class="app-type-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Progressive Web Apps</h3>
+                <p>Web applications that offer a mobile app-like experience, combining the best of web and mobile apps without requiring installation.</p>
+                <ul class="app-features">
+                    <li><i class="fas fa-check-circle"></i> Responsive design</li>
+                    <li><i class="fas fa-check-circle"></i> Offline functionality</li>
+                    <li><i class="fas fa-check-circle"></i> Push notifications</li>
+                    <li><i class="fas fa-check-circle"></i> App-like experience</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="app-type-card">
+                <div class="app-type-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Enterprise Apps</h3>
+                <p>Custom applications designed to streamline business processes, improve productivity, and enhance communication within organizations.</p>
+                <ul class="app-features">
+                    <li><i class="fas fa-check-circle"></i> Secure data handling</li>
+                    <li><i class="fas fa-check-circle"></i> Integration with existing systems</li>
+                    <li><i class="fas fa-check-circle"></i> Role-based access control</li>
+                    <li><i class="fas fa-check-circle"></i> Analytics and reporting</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="app-type-card">
+                <div class="app-type-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>E-Commerce Apps</h3>
+                <p>Mobile shopping applications that help businesses sell products and services directly to customers through a convenient mobile interface.</p>
+                <ul class="app-features">
+                    <li><i class="fas fa-check-circle"></i> Secure payment integration</li>
+                    <li><i class="fas fa-check-circle"></i> Product catalog management</li>
+                    <li><i class="fas fa-check-circle"></i> Order tracking</li>
+                    <li><i class="fas fa-check-circle"></i> Customer loyalty features</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="process-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our App Development Process</h2>
+            <p>A systematic approach to creating successful mobile applications</p>
+        </div>
+        
+        <div class="process-container">
+            <div class="process-line"></div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h3>Discovery & Planning</h3>
+                        <p>We begin by understanding your business goals, target audience, and app requirements. This phase involves in-depth discussions, market research, and competitor analysis to define the app's scope, features, and success criteria.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3>UI/UX Design</h3>
+                        <p>Our designers create wireframes and interactive prototypes that visualize the app's user interface and experience. We focus on creating intuitive navigation, engaging visuals, and a seamless user journey that aligns with your brand identity.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h3>Development</h3>
+                        <p>Our development team brings the design to life by writing clean, efficient code. We follow agile methodologies, breaking the development into sprints and providing regular updates on progress. This phase includes front-end and back-end development, API integration, and database setup.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3>Testing & QA</h3>
+                        <p>We conduct rigorous testing to ensure your app functions flawlessly across different devices and scenarios. This includes functional testing, performance testing, security testing, and usability testing to identify and fix any issues before launch.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <div class="process-content">
+                        <h3>Deployment</h3>
+                        <p>Once the app passes all quality checks, we prepare it for submission to the App Store and/or Google Play Store. We handle the submission process, ensuring compliance with all platform guidelines and optimizing the app listing for better visibility.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">6</div>
+                    <div class="process-content">
+                        <h3>Maintenance & Support</h3>
+                        <p>Our relationship doesn't end at launch. We provide ongoing maintenance and support to ensure your app continues to perform optimally. This includes regular updates, bug fixes, performance improvements, and adaptation to new OS versions and device specifications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technologies Section -->
+<section class="technologies-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Technologies We Use</h2>
+            <p>We leverage the latest technologies to build robust and scalable applications</p>
+        </div>
+        
+        <div class="tech-tabs">
+            <div class="tech-tab active" data-tab="ios">iOS</div>
+            <div class="tech-tab" data-tab="android">Android</div>
+            <div class="tech-tab" data-tab="cross-platform">Cross-Platform</div>
+            <div class="tech-tab" data-tab="backend">Backend</div>
+            <div class="tech-tab" data-tab="database">Database</div>
+        </div>
+        
+        <div class="tech-content active" id="ios-content">
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Swift">
+                    </div>
+                    <div class="tech-name">Swift</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Objective-C">
+                    </div>
+                    <div class="tech-name">Objective-C</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="SwiftUI">
+                    </div>
+                    <div class="tech-name">SwiftUI</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="UIKit">
+                    </div>
+                    <div class="tech-name">UIKit</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Core Data">
+                    </div>
+                    <div class="tech-name">Core Data</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="ARKit">
+                    </div>
+                    <div class="tech-name">ARKit</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-content" id="android-content">
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Kotlin">
+                    </div>
+                    <div class="tech-name">Kotlin</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Java">
+                    </div>
+                    <div class="tech-name">Java</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Android Studio">
+                    </div>
+                    <div class="tech-name">Android Studio</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Jetpack Compose">
+                    </div>
+                    <div class="tech-name">Jetpack Compose</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Room">
+                    </div>
+                    <div class="tech-name">Room</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Material Design">
+                    </div>
+                    <div class="tech-name">Material Design</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-content" id="cross-platform-content">
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="React Native">
+                    </div>
+                    <div class="tech-name">React Native</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Flutter">
+                    </div>
+                    <div class="tech-name">Flutter</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Dart">
+                    </div>
+                    <div class="tech-name">Dart</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="JavaScript">
+                    </div>
+                    <div class="tech-name">JavaScript</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="TypeScript">
+                    </div>
+                    <div class="tech-name">TypeScript</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Xamarin">
+                    </div>
+                    <div class="tech-name">Xamarin</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-content" id="backend-content">
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Node.js">
+                    </div>
+                    <div class="tech-name">Node.js</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Python">
+                    </div>
+                    <div class="tech-name">Python</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="PHP">
+                    </div>
+                    <div class="tech-name">PHP</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Ruby on Rails">
+                    </div>
+                    <div class="tech-name">Ruby on Rails</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Django">
+                    </div>
+                    <div class="tech-name">Django</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Express.js">
+                    </div>
+                    <div class="tech-name">Express.js</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-content" id="database-content">
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="MongoDB">
+                    </div>
+                    <div class="tech-name">MongoDB</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="MySQL">
+                    </div>
+                    <div class="tech-name">MySQL</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="PostgreSQL">
+                    </div>
+                    <div class="tech-name">PostgreSQL</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Firebase">
+                    </div>
+                    <div class="tech-name">Firebase</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="Redis">
+                    </div>
+                    <div class="tech-name">Redis</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="https://via.placeholder.com/60x60" alt="SQLite">
+                    </div>
+                    <div class="tech-name">SQLite</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="portfolio-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our App Portfolio</h2>
+            <p>Some of our recent mobile application projects</p>
+        </div>
+        
+        <div class="portfolio-filters">
+            <div class="portfolio-filter active" data-filter="all">All</div>
+            <div class="portfolio-filter" data-filter="ios">iOS</div>
+            <div class="portfolio-filter" data-filter="android">Android</div>
+            <div class="portfolio-filter" data-filter="cross-platform">Cross-Platform</div>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="ios">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Himalayan Trekking App">
+                    <div class="portfolio-overlay">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Himalayan Trekking App</h3>
+                    <p class="portfolio-category">iOS App</p>
+                    <p class="portfolio-description">A comprehensive trekking app with trail maps, weather updates, and emergency services for trekkers in the Himalayan region.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">Swift</span>
+                        <span class="portfolio-tag">MapKit</span>
+                        <span class="portfolio-tag">CoreLocation</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="android">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Kathmandu Food Delivery">
+                    <div class="portfolio-overlay">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Kathmandu Food Delivery</h3>
+                    <p class="portfolio-category">Android App</p>
+                    <p class="portfolio-description">A food delivery application connecting local restaurants with customers in Kathmandu, featuring real-time order tracking.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">Kotlin</span>
+                        <span class="portfolio-tag">Google Maps API</span>
+                        <span class="portfolio-tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="cross-platform">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Nepal Travel Guide">
+                    <div class="portfolio-overlay">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Nepal Travel Guide</h3>
+                    <p class="portfolio-category">Cross-Platform App</p>
+                    <p class="portfolio-description">A comprehensive travel guide app for tourists visiting Nepal, featuring attractions, accommodations, and local experiences.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">React Native</span>
+                        <span class="portfolio-tag">Redux</span>
+                        <span class="portfolio-tag">Node.js</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="ios">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Everest Banking">
+                    <div class="portfolio-overlay">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Everest Banking</h3>
+                    <p class="portfolio-category">iOS App</p>
+                    <p class="portfolio-description">A secure mobile banking application for a leading Nepalese bank, featuring account management, transfers, and bill payments.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">Swift</span>
+                        <span class="portfolio-tag">Core Data</span>
+                        <span class="portfolio-tag">Biometric Authentication</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="android">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Kathmandu City Guide">
+                    <div class="portfolio-overlay">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Kathmandu City Guide</h3>
+                    <p class="portfolio-category">Android App</p>
+                    <p class="portfolio-description">An interactive city guide for Kathmandu, featuring augmented reality views of historical sites and cultural landmarks.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">Kotlin</span>
+                        <span class="portfolio-tag">ARCore</span>
+                        <span class="portfolio-tag">Room Database</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="cross-platform">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Himalayan Marketplace">
+                    <div class="portfolio-overlay">
+                        <a href="#"><i class="fas fa-link"></i></a>
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Himalayan Marketplace</h3>
+                    <p class="portfolio-category">Cross-Platform App</p>
+                    <p class="portfolio-description">An e-commerce platform for Nepalese artisans to sell their handcrafted products globally, featuring secure payments and shipping.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">Flutter</span>
+                        <span class="portfolio-tag">Dart</span>
+                        <span class="portfolio-tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="projects.html" class="btn">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Development Team</h2>
+            <p>Meet the talented professionals behind our app development</p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://via.placeholder.com/400x500" alt="Suman Gurung">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Suman Gurung</h3>
+                    <p class="member-position">Lead Mobile Developer</p>
+                    <p class="member-bio">Suman leads our mobile development team with expertise in iOS, Android, and cross-platform development. He has over 10 years of experience in creating innovative mobile solutions.</p>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://via.placeholder.com/400x500" alt="Nisha Rai">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Nisha Rai</h3>
+                    <p class="member-position">iOS Developer</p>
+                    <p class="member-bio">Nisha specializes in iOS development using Swift and Objective-C. She has a keen eye for detail and is passionate about creating intuitive user experiences for Apple devices.</p>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://via.placeholder.com/400x500" alt="Dipak Shrestha">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Dipak Shrestha</h3>
+                    <p class="member-position">Android Developer</p>
+                    <p class="member-bio">Dipak is our Android expert, with extensive experience in Kotlin and Java. He specializes in creating high-performance applications with beautiful Material Design interfaces.</p>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://via.placeholder.com/400x500" alt="Maya Thapa">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Maya Thapa</h3>
+                    <p class="member-position">Cross-Platform Developer</p>
+                    <p class="member-bio">Maya specializes in React Native and Flutter development, creating seamless experiences across iOS and Android platforms. She is passionate about code reusability and efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="pricing-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>App Development Packages</h2>
+            <p>Choose the package that best suits your needs</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Basic</h3>
+                    <div class="pricing-price">$5,999</div>
+                    <div class="pricing-duration">Starting price</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Single Platform (iOS or Android)</li>
+                        <li><i class="fas fa-check-circle"></i> Up to 5 Core Features</li>
+                        <li><i class="fas fa-check-circle"></i> Basic UI/UX Design</li>
+                        <li><i class="fas fa-check-circle"></i> User Authentication</li>
+                        <li><i class="fas fa-check-circle"></i> Basic Backend Integration</li>
+                        <li><i class="fas fa-check-circle"></i> App Store Submission</li>
+                        <li class="not-included"><i class="fas fa-times-circle"></i> Admin Panel</li>
+                        <li class="not-included"><i class="fas fa-times-circle"></i> Advanced Features</li>
+                    </ul>
+                    <div class="pricing-action">
+                        <a href="contact.html" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-card popular">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Professional</h3>
+                    <div class="pricing-price">$12,999</div>
+                    <div class="pricing-duration">Starting price</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Both Platforms (iOS & Android)</li>
+                        <li><i class="fas fa-check-circle"></i> Up to 10 Advanced Features</li>
+                        <li><i class="fas fa-check-circle"></i> Premium UI/UX Design</li>
+                        <li><i class="fas fa-check-circle"></i> User Authentication</li>
+                        <li><i class="fas fa-check-circle"></i> Full Backend Integration</li>
+                        <li><i class="fas fa-check-circle"></i> App Store Submission</li>
+                        <li><i class="fas fa-check-circle"></i> Basic Admin Panel</li>
+                        <li class="not-included"><i class="fas fa-times-circle"></i> Advanced Analytics</li>
+                    </ul>
+                    <div class="pricing-action">
+                        <a href="contact.html" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Enterprise</h3>
+                    <div class="pricing-price">$24,999</div>
+                    <div class="pricing-duration">Starting price</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Both Platforms (iOS & Android)</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited Features</li>
+                        <li><i class="fas fa-check-circle"></i> Custom UI/UX Design</li>
+                        <li><i class="fas fa-check-circle"></i> Advanced Authentication</li>
+                        <li><i class="fas fa-check-circle"></i> Full Backend Integration</li>
+                        <li><i class="fas fa-check-circle"></i> App Store Submission</li>
+                        <li><i class="fas fa-check-circle"></i> Advanced Admin Panel</li>
+                        <li><i class="fas fa-check-circle"></i> Advanced Analytics & Reporting</li>
+                    </ul>
+                    <div class="pricing-action">
+                        <a href="contact.html" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Client Testimonials</h2>
+            <p>What our clients say about our app development services</p>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-item active">
+                <div class="testimonial-text">
+                    <p>Bogati Tech developed our trekking app, and the results exceeded our expectations. Their team took the time to understand our unique requirements and delivered a solution that has significantly improved our customer experience. The app is intuitive, reliable, and has all the features we needed. We've received excellent feedback from our users.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://via.placeholder.com/100x100" alt="Ramesh Sharma">
+                    </div>
+                    <div class="author-info">
+                        <h4>Ramesh Sharma</h4>
+                        <p>CEO, Himalayan Trekking</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>We hired Bogati Tech to develop our food delivery app, and they delivered an exceptional product. The app is fast, user-friendly, and has all the features we requested. Their team was responsive, professional, and kept us informed throughout the development process. The app has helped us increase our orders by 45% in just three months.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://via.placeholder.com/100x100" alt="Sita Thapa">
+                    </div>
+                    <div class="author-info">
+                        <h4>Sita Thapa</h4>
+                        <p>Owner, Kathmandu Food Delivery</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>The e-commerce app developed by Bogati Tech has transformed our business. We can now reach customers globally and provide a seamless shopping experience. The team was professional, attentive to our needs, and delivered the project on time and within budget. The app's intuitive design and robust functionality have received praise from our customers.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://via.placeholder.com/100x100" alt="Anita Gurung">
+                    </div>
+                    <div class="author-info">
+                        <h4>Anita Gurung</h4>
+                        <p>Founder, Himalayan Marketplace</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-nav">
+                <button id="prev-testimonial"><i class="fas fa-arrow-left"></i></button>
+                <button id="next-testimonial"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+            <p>Common questions about our app development services</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How long does it take to develop a mobile app?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The development timeline varies depending on the complexity of the app, the number of features, and the platforms you want to target. A basic app might take 2-3 months, while a more complex app with advanced features could take 4-6 months or more. During our initial consultation, we'll provide you with a detailed timeline based on your specific requirements.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How much does it cost to develop an app?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The cost of app development depends on various factors, including the complexity of the app, the number of features, the platforms you want to target, and the design requirements. Our basic packages start at $5,999, but we provide customized quotes based on your specific needs. We're transparent about our pricing and will provide a detailed breakdown of costs during our initial consultation.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Which platform should I develop for first - iOS or Android?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The choice between iOS and Android depends on your target audience and business goals. If your audience primarily uses iPhones, starting with iOS might be better. If your audience is more diverse or predominantly uses Android devices, Android might be the better choice. Many businesses opt for cross-platform development to reach both audiences simultaneously. We can help you analyze your target market and make the best decision for your specific situation.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you provide app maintenance and support after launch?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we offer ongoing maintenance and support services to ensure your app continues to function optimally. This includes bug fixes, performance improvements, compatibility updates for new OS versions, and minor feature enhancements. We offer various maintenance packages to suit different needs and budgets, and we can customize a support plan based on your specific requirements.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do you ensure the security of mobile applications?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Security is a top priority in our development process. We implement industry best practices for secure coding, data encryption, secure authentication, and protection against common vulnerabilities. We conduct regular security testing throughout the development process to identify and address potential issues. Additionally, we stay updated on the latest security threats and mitigation strategies to ensure your app remains secure over time.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can you help with app store submission and approval?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we handle the entire app store submission process for both the Apple App Store and Google Play Store. This includes preparing all necessary assets (screenshots, descriptions, keywords), ensuring compliance with platform guidelines, setting up developer accounts if needed, and addressing any feedback or issues that arise during the review process. Our goal is to make the submission and approval process as smooth as possible for you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Build Your Mobile App?</h2>
+            <p>Let's collaborate to create a custom mobile application that meets your business needs and delights your users.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-large"><i class="fas fa-envelope"></i> Get a Free Consultation</a>
+                <a href="tel:+9779800000000" class="btn btn-large btn-outline"><i class="fas fa-phone"></i> Call Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Bogati Tech</h3>
+            <p>Transforming ideas into digital reality with innovative solutions for your business.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h3>Our Services</h3>
+            <ul class="footer-links">
+                <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                <li><a href="services.html#photography-videography">Photography & Videography</a></li>
+                <li><a href="business-consulting.html">Business Consulting</a></li>
+                <li><a href="services.html#website-development">Website Development</a></li>
+                <li><a href="app-development.html">App Development</a></li>
+                <li><a href="graphic-designing.html">Graphic Designing</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="careers.html">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Contact Info</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Thamel, Kathmandu, Nepal</p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:info@bogatitech.com">info@bogatitech.com</a></p>
+            <p><i class="fas fa-phone"></i> <a href="tel:+9779800000000">+977 9800000000</a></p>
+            <div class="newsletter">
+                <h4>Subscribe to our newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2023 Bogati Tech. All Rights Reserved.</p>
+        <ul class="footer-bottom-links">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="sitemap.html">Sitemap</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+<!-- JavaScript -->
+<script>
+    // Navbar Toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Dropdown Toggle for Mobile
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+        if (window.scrollY > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+
+    // Back to Top Button Click
+    const backToTop = document.querySelector('.back-to-top');
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Technology Tabs
+    const techTabs = document.querySelectorAll('.tech-tab');
+    const techContents = document.querySelectorAll('.tech-content');
+
+    techTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+            
+            // Remove active class from all tabs and contents
+            techTabs.forEach(tab => tab.classList.remove('active'));
+            techContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add('active');
+            document.getElementById(`${tabId}-content`).classList.add('active');
+        });
+    });
+
+    // Portfolio Filters
+    const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    portfolioFilters.forEach(filter => {
+        filter.addEventListener('click', () => {
+            const filterValue = filter.getAttribute('data-filter');
+            
+            // Remove active class from all filters
+            portfolioFilters.forEach(filter => filter.classList.remove('active'));
+            
+            // Add active class to clicked filter
+            filter.classList.add('active');
+            
+            // Filter portfolio items
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Testimonial Slider
+    const testimonials = document.querySelectorAll('.testimonial-item');
+    const prevBtn = document.getElementById('prev-testimonial');
+    const nextBtn = document.getElementById('next-testimonial');
+    let currentTestimonial = 0;
+
+    function showTestimonial(index) {
+        testimonials.forEach((testimonial, i) => {
+            if (i === index) {
+                testimonial.classList.add('active');
+            } else {
+                testimonial.classList.remove('active');
+            }
+        });
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentTestimonial--;
+        if (currentTestimonial < 0) {
+            currentTestimonial = testimonials.length - 1;
+        }
+        showTestimonial(currentTestimonial);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentTestimonial++;
+        if (currentTestimonial >= testimonials.length) {
+            currentTestimonial = 0;
+        }
+        showTestimonial(currentTestimonial);
+    });
+
+    // Auto-rotate testimonials
+    setInterval(() => {
+        currentTestimonial++;
+        if (currentTestimonial >= testimonials.length) {
+            currentTestimonial = 0;
+        }
+        showTestimonial(currentTestimonial);
+    }, 8000);
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector('i');
+            
+            // Toggle active class
+            faqItem.classList.toggle('active');
+            
+            // Toggle icon
+            if (faqItem.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        });
+    });
+
+    // Newsletter Form Submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to a server
+            alert('Thank you for subscribing to our newsletter!');
+            
+            // Reset form
+            newsletterForm.reset();
+        });
+    }
+</script>
+</body>
+</html>
+

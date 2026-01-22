@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography & Videography Services - Bogati Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <style>
+        :root {
+            --primary: #ADD8E6;
+            --primary-dark: #7FB3D5;
+            --secondary: #2C3E50;
+            --accent: #3498DB;
+            --text: #333;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-50 {
+            margin-top: 50px;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-dark);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-dark);
+            color: var(--primary-dark);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: 0.5s;
+        }
+
+        .navbar.sticky {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+            color: var(--primary-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-dark);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-dark);
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 250px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: 0.3s;
+            z-index: 1001;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text);
+            transition: 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(173, 216, 230, 0.1);
+            color: var(--primary-dark);
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Service Detail Page */
+        .service-detail {
+            padding: 150px 50px 100px;
+        }
+
+        .service-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .service-header h1 {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .service-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        .service-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .service-main {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .service-sidebar {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .service-image {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .service-text h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .service-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .service-text ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .service-text ul li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .service-cta {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .service-cta h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .service-cta p {
+            margin-bottom: 20px;
+        }
+
+        .service-info {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .service-info h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .info-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+
+        .service-features {
+            margin-top: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .feature-desc {
+            line-height: 1.6;
+        }
+
+        .service-process {
+            margin-top: 50px;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-dark);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .step-desc {
+            line-height: 1.6;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 45px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            z-index: -1;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            left: 25%;
+            bottom: -10px;
+        }
+
+        .section-title p {
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-container {
+            display: flex;
+            overflow: hidden;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 40px;
+            transition: 0.5s;
+        }
+
+        .testimonial-content {
+            margin-bottom: 30px;
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .testimonial-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+
+        .author-info p {
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .slider-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .slider-btn:hover {
+            color: var(--primary-dark);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+            margin: 0 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: var(--primary-dark);
+        }
+
+        .related-projects {
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .related-projects h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .related-project-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .related-project-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-project-item img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .related-project-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+
+        .related-project-info a {
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .related-project-info a:hover {
+            color: var(--accent);
+        }
+
+        .service-testimonials {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            padding: 80px 50px;
+            margin-top: 80px;
+        }
+
+        .service-cta-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 100px 50px;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-info {
+            background: white;
+            padding: 20px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .portfolio-info p {
+            color: var(--text);
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 50px 30px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a, .footer-col a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover, .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .newsletter {
+            margin-top: 20px;
+        }
+
+        .newsletter h4 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            height: 45px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form button {
+            width: 45px;
+            background: var(--primary);
+            color: var(--secondary);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-dark);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+            .navbar.sticky {
+                padding: 10px 30px;
+            }
+            .service-detail {
+                padding: 120px 30px 80px;
+            }
+            .service-header h1 {
+                font-size: 2.5rem;
+            }
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            .navbar.sticky {
+                padding: 10px 20px;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.5s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 1001;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links li {
+                margin: 15px 0;
+            }
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding: 0;
+                margin-top: 10px;
+                display: none;
+            }
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            .menu-btn {
+                display: block;
+                z-index: 1002;
+            }
+            .service-detail {
+                padding: 100px 20px 60px;
+            }
+            .service-header h1 {
+                font-size: 2rem;
+            }
+            .service-content {
+                flex-direction: column;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-steps {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-bottom-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-header h1 {
+                font-size: 1.8rem;
+            }
+            .service-cta, .service-info {
+                padding: 20px;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            <i class="fas fa-microchip logo-icon"></i>
+            Bogati<span>Tech</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li class="dropdown">
+                <a href="../services.html" class="active">Services <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                    <li><a href="photography-videography.html" class="active">Photography & Videography</a></li>
+                    <li><a href="business-consulting.html">Business Consulting</a></li>
+                    <li><a href="website-development.html">Website Development</a></li>
+                    <li><a href="app-development.html">App Development</a></li>
+                    <li><a href="graphic-designing.html">Graphic Designing</a></li>
+                </ul>
+            </li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../team.html">Our Team</a></li>
+            <li><a href="../clients.html">Clients</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Service Detail -->
+    <section class="service-detail">
+        <div class="service-header">
+            <h1>Photography & Videography Services</h1>
+            <p>Professional photo and video production services to showcase your products and services in the best light</p>
+        </div>
+
+        <div class="service-content">
+            <div class="service-main">
+                <div class="service-image">
+                    <img src="../images/services/photography-videography-banner.jpg" alt="Photography & Videography Services">
+                </div>
+                <div class="service-text">
+                    <h2>Capture Your Brand's Visual Story</h2>
+                    <p>In today's visually-driven digital landscape, high-quality photography and videography are essential for businesses looking to stand out. At Bogati Tech, we offer comprehensive visual content creation services designed to showcase your brand, products, and services in the most compelling way possible.</p>
+                    
+                    <p>Our team of experienced photographers and videographers combines technical expertise with creative vision to deliver stunning visual assets that elevate your brand and engage your audience. Whether you need product photography, corporate videos, event coverage, or aerial footage, we have the skills and equipment to bring your vision to life.</p>
+                    
+                    <h2>Our Photography & Videography Approach</h2>
+                    <p>We believe that every brand has a unique visual story to tell. Our approach focuses on understanding your brand identity, target audience, and marketing objectives to create visual content that resonates with your customers and achieves your business goals. Our process includes:</p>
+                    
+                    <ul>
+                        <li><strong>Creative Consultation:</strong> We begin with a detailed discussion to understand your vision, requirements, and objectives for the visual content.</li>
+                        <li><strong>Concept Development:</strong> Our creative team develops concepts and storyboards that align with your brand identity and marketing goals.</li>
+                        <li><strong>Professional Production:</strong> Using state-of-the-art equipment and techniques, we capture high-quality images and footage that tell your brand's story.</li>
+                        <li><strong>Post-Production Excellence:</strong> Our editing team enhances the raw material with color grading, sound design, and special effects to create polished final products.</li>
+                        <li><strong>Delivery & Implementation:</strong> We provide the finished visual assets in various formats optimized for different platforms and uses.</li>
+                    </ul>
+                    
+                    <div class="service-video">
+                        <h2>See Our Photography & Videography in Action</h2>
+                        <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; margin-bottom: 30px;">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/example-video-id" title="Photography & Videography Services" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    
+                    <h2>Our Photography Portfolio</h2>
+                    <div class="portfolio-grid">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <img src="../images/portfolio/photo1.jpg" alt="Product Photography">
+                                <div class="portfolio-overlay">
+                                    <a href="#" class="btn btn-sm">View Larger</a>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Product Photography</h3>
+                                <p>Luxury Jewelry Collection</p>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <img src="../images/portfolio/photo2.jpg" alt="Corporate Photography">
+                                <div class="portfolio-overlay">
+                                    <a href="#" class="btn btn-sm">View Larger</a>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Corporate Photography</h3>
+                                <p>Executive Team Portraits</p>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <img src="../images/portfolio/photo3.jpg" alt="Event Photography">
+                                <div class="portfolio-overlay">
+                                    <a href="#" class="btn btn-sm">View Larger</a>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Event Photography</h3>
+                                <p>Tech Summit 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-sidebar">
+                <div class="service-cta glass-card">
+                    <h3>Ready to Elevate Your Visual Content?</h3>
+                    <p>Let's discuss how our photography and videography services can help showcase your brand.</p>
+                    <a href="../contact.html" class="btn">Contact Us Today</a>
+                </div>
+                
+                <div class="service-info glass-card">
+                    <h3>Service Information</h3>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock info-icon"></i>
+                        <div class="info-text">
+                            <h4>Turnaround Time</h4>
+                            <p>1-3 weeks depending on project scope</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-tag info-icon"></i>
+                        <div class="info-text">
+                            <h4>Pricing</h4>
+                            <p>Customized packages starting from $500</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-camera info-icon"></i>
+                        <div class="info-text">
+                            <h4>Equipment</h4>
+                            <p>Professional-grade cameras, lighting, and drones</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-users info-icon"></i>
+                        <div class="info-text">
+                            <h4>Ideal For</h4>
+                            <p>Businesses looking to enhance their visual marketing assets</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="related-projects glass-card">
+                    <h3>Related Projects</h3>
+                    <div class="related-project-item">
+                        <img src="../images/projects/project7.jpg" alt="Product Photography">
+                        <div class="related-project-info">
+                            <h4>Luxury Jewelry Collection</h4>
+                            <a href="../projects.html#project7">View Details</a>
+                        </div>
+                    </div>
+                    <div class="related-project-item">
+                        <img src="../images/projects/project10.jpg" alt="Corporate Video">
+                        <div class="related-project-info">
+                            <h4>Corporate Brand Video</h4>
+                            <a href="../projects.html#project10">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="service-features">
+            <div class="section-title">
+                <h2>Our Photography & Videography Services</h2>
+                <p>Comprehensive visual content creation for all your business needs</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <i class="fas fa-box feature-icon"></i>
+                    <h3 class="feature-title">Product Photography</h3>
+                    <p class="feature-desc">High-quality product photography that showcases your products in the best light. We use professional lighting and composition techniques to highlight features and create compelling images for e-commerce and marketing.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <i class="fas fa-building feature-icon"></i>
+                    <h3 class="feature-title">Corporate Photography</h3>
+                    <p class="feature-desc">Professional corporate photography including team portraits, headshots, workplace culture, and office environment photos that reflect your company's identity and values.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <i class="fas fa-calendar-alt feature-icon"></i>
+                    <h3 class="feature-title">Event Coverage</h3>
+                    <p class="feature-desc">Comprehensive event photography and videography services to document conferences, product launches, corporate events, and celebrations, capturing key moments and the atmosphere.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <i class="fas fa-film feature-icon"></i>
+                    <h3 class="feature-title">Corporate Videos</h3>
+                    <p class="feature-desc">Professional corporate videos including company profiles, testimonials, product demonstrations, and explainer videos that communicate your message effectively.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <i class="fas fa-drone feature-icon"></i>
+                    <h3 class="feature-title">Aerial Photography & Videography</h3>
+                    <p class="feature-desc">Stunning aerial footage using drones to capture unique perspectives of properties, events, and landscapes, adding a dynamic dimension to your visual content.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <i class="fas fa-edit feature-icon"></i>
+                    <h3 class="feature-title">Post-Production & Editing</h3>
+                    <p class="feature-desc">Expert post-production services including photo retouching, color correction, video editing, sound design, and motion graphics to create polished final products.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="service-process">
+            <div class="section-title">
+                <h2>Our Photography & Videography Process</h2>
+                <p>A systematic approach to creating stunning visual content</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Consultation</h3>
+                    <p class="step-desc">We discuss your vision, requirements, and objectives to understand what you want to achieve with your visual content.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Planning</h3>
+                    <p class="step-desc">We develop concepts, storyboards, and shot lists, and plan logistics including locations, equipment, and scheduling.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Production</h3>
+                    <p class="step-desc">Our professional team captures high-quality images and footage using state-of-the-art equipment and techniques.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Editing</h3>
+                    <p class="step-desc">We enhance the raw material with professional editing, color grading, sound design, and special effects.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Delivery</h3>
+                    <p class="step-desc">We provide the finished visual assets in various formats optimized for different platforms and uses.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="service-testimonials">
+            <div class="section-title">
+                <h2>Client Success Stories</h2>
+                <p>See what our clients say about our photography and videography services</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-container">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card glass-card">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>Working with Bogati Tech on our product photography has been a game-changer for our e-commerce business. The quality of the images they produced has significantly improved our online presence and increased our conversion rates by 35%.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../images/clients/client4.jpg" alt="Client 4">
+                            <div class="author-info">
+                                <h4>Maya Lama</h4>
+                                <p>Marketing Director, Himalayan Crafts</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card glass-card">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>The corporate video created by Bogati Tech perfectly captured our company culture and values. It has been an invaluable tool for our recruitment efforts and client presentations. Their team was professional, creative, and a pleasure to work with.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../images/clients/client5.jpg" alt="Client 5">
+                            <div class="author-info">
+                                <h4>Suresh Poudel</h4>
+                                <p>CEO, TechNep Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card glass-card">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>Bogati Tech's event coverage of our annual conference was exceptional. They captured all the key moments and the energy of the event, providing us with a comprehensive visual record that we've used across our marketing channels.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../images/clients/client6.jpg" alt="Client 6">
+                            <div class="author-info">
+                                <h4>Nirmala KC</h4>
+                                <p>Event Manager, Nepal Business Forum</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="service-cta-section">
+            <div class="cta-content">
+                <h2>Ready to Enhance Your Visual Content?</h2>
+                <p>Let's discuss how our photography and videography services can help showcase your brand</p>
+                <a href="../contact.html" class="btn btn-large">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Bogati Tech</h3>
+                <p>Transforming ideas into digital reality with innovative solutions for your business.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Our Services</h3>
+                <ul class="footer-links">
+                    <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                    <li><a href="photography-videography.html">Photography & Videography</a></li>
+                    <li><a href="business-consulting.html">Business Consulting</a></li>
+                    <li><a href="website-development.html">Website Development</a></li>
+                    <li><a href="app-development.html">App Development</a></li>
+                    <li><a href="graphic-designing.html">Graphic Designing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="../team.html">Our Team</a></li>
+                    <li><a href="../clients.html">Clients</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../careers.html">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@younghubitsolutions.com">info@younghubitsolutions.com</a></p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+9779800000000">+977 9800000000</a></p>
+                <div class="newsletter">
+                    <h4>Subscribe to our newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Bogati Tech. All Rights Reserved.</p>
+            <ul class="footer-bottom-links">
+                <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="../terms-of-service.html">Terms of Service</a></li>
+                <li><a href="../sitemap.html">Sitemap</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('sticky');
+            } else {
+                navbar.classList.remove('sticky');
+            }
+            
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Change icon based on menu state
+                const icon = menuBtn.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // Mobile Dropdown Toggle
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            
+            link.addEventListener('click', function(e) {
+                // Only prevent default on mobile
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                    
+                    // Toggle icon
+                    const icon = link.querySelector('i');
+                    if (dropdown.classList.contains('active')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                }
+            });
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768 && !link.parentElement.classList.contains('dropdown')) {
+                    navLinks.classList.remove('active');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    
+                    // Close any open dropdowns
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                        const dropdownIcon = dropdown.querySelector('i');
+                        if (dropdownIcon) {
+                            dropdownIcon.classList.remove('fa-chevron-up');
+                            dropdownIcon.classList.add('fa-chevron-down');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Testimonial Slider
+        const testimonialContainer = document.querySelector('.testimonial-container');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const dots = document.querySelectorAll('.dot');
+
+        if (testimonialContainer && prevBtn && nextBtn) {
+            let currentSlide = 0;
+            const totalSlides = document.querySelectorAll('.testimonial-card').length;
+            
+            // Set initial position
+            testimonialContainer.style.transform = `translateX(0)`;
+            
+            // Update dots
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Go to slide
+            function goToSlide(slideIndex) {
+                currentSlide = slideIndex;
+                testimonialContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                updateDots();
+            }
+            
+            // Next slide
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                goToSlide(currentSlide);
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                goToSlide(currentSlide);
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+            
+            // Auto slide
+            let slideInterval = setInterval(nextSlide, 5000);
+            
+            // Pause on hover
+            testimonialContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            testimonialContainer.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // Don't interfere with dropdown toggles on mobile
+                if (this.parentElement.classList.contains('dropdown') && window.innerWidth <= 768) {
+                    return;
+                }
+                
+                const targetId = this.getAttribute('href');
+                
+                // Only process if it's an anchor link (not a regular link)
+                if (targetId.startsWith('#') && targetId.length > 1) {
+                    e.preventDefault();
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            const icon = menuBtn.querySelector('i');
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Newsletter Form Submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = this.querySelector('input').value;
+                
+                // In a real application, you would send this data to a server
+                console.log('Newsletter subscription:', email);
+                
+                // Show success message
+                alert('Thank you for subscribing to our newsletter!');
+                
+                // Reset form
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>

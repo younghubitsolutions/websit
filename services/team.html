@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Younghub IT Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4e73df;
+            --primary-dark: #2e59d9;
+            --secondary: #1a1a2e;
+            --text: #4a4a4a;
+            --light: #f8f9fc;
+            --success: #1cc88a;
+            --info: #36b9cc;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --dark: #5a5c69;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f8f9fc;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 50px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 220px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(78, 115, 223, 0.1);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/team-header.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 180px 50px 100px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Team Stats Section */
+        .team-stats {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        /* Team Categories */
+        .team-categories {
+            padding: 80px 0 40px;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-tab {
+            padding: 12px 25px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .category-tab.active, .category-tab:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Team Members Section */
+        .team-members {
+            padding: 0 0 80px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-social {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+            background: rgba(78, 115, 223, 0.9);
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-social {
+            bottom: 0;
+        }
+
+        .member-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .member-social a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .member-info {
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .member-position {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .member-bio {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        /* Join Team Section */
+        .join-team {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/join-team-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+        }
+
+        .join-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .join-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .join-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .benefit-item {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 80px 50px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-col i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .newsletter {
+            margin-top: 30px;
+        }
+
+        .newsletter h4 {
+            margin-bottom: 15px;
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+            
+            .navbar.scrolled {
+                padding: 10px 30px;
+            }
+            
+            .section {
+                padding: 80px 30px;
+            }
+            
+            .page-header {
+                padding: 150px 30px 80px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar.scrolled {
+                padding: 10px 20px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 30px 30px;
+                transition: 0.4s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                max-height: 500px;
+            }
+            
+            .dropdown-menu a {
+                padding: 10px 15px;
+            }
+            
+            .menu-btn {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .menu-btn.active i::before {
+                content: '\f00d';
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .page-header {
+                padding: 120px 20px 60px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .benefits-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .benefit-item {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="../index.html" class="logo">
+        <!-- <i class="fas fa-microchip logo-icon"></i> -->
+        Younghub<span>IT Solutions</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+            <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="services.html#website-development.html">Website Development</a></li>
+                <li><a href="services.html#graphic-designing.html">Graphic Designing</a></li>
+                <!-- <li><a href="services.html#business-consulting">Business Consulting</a></li> -->
+                <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                <!-- <li><a href="services.html#photography-videography">Photography & Videography</a></li>
+                <li><a href="services.html#app-development">App Development</a></li> -->
+            </ul>
+        </li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="team.html" class="active">Our Team</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <h1>Our Team</h1>
+    <p>Meet the talented professionals behind Younghub IT Solutions's success</p>
+</section>
+
+<!-- Team Stats Section -->
+<section class="team-stats">
+    <div class="container">
+        <div class="section-title">
+            <h2>Team Highlights</h2>
+            <p>Our diverse team of experts is our greatest asset</p>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number">7+</div>
+                <div class="stat-text">Team Members</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="stat-number">3+</div>
+                <div class="stat-text">Services</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="stat-number">70+</div>
+                <div class="stat-text">Happy Clients</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="stat-number">90%</div>
+                <div class="stat-text">Freelancers Teams</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Categories -->
+<section class="team-categories">
+    <div class="container">
+        <div class="section-title">
+            <h2>Meet Our Team</h2>
+            <p>The talented professionals who make our company great</p>
+        </div>
+        
+        <div class="category-tabs">
+            <div class="category-tab active" data-category="all">All</div>
+            <div class="category-tab" data-category="leadership">Leadership</div>
+            <div class="category-tab" data-category="development">Development</div>
+            <div class="category-tab" data-category="design">Design</div>
+            <div class="category-tab" data-category="marketing">Marketing</div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Members Section -->
+<section class="team-members">
+    <div class="container">
+        <div class="team-grid">
+
+            <!-- Leadership Team -->
+            <div class="team-member" data-category="leadership">
+                <div class="member-image">
+                    <img src="../images/people_image/narayanme.png" alt=" Narayan Bogati image younghub it solutions founder and ceo">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Narayan Bogati</h3>
+                    <p class="member-position">GM</p>
+                    <p class="member-bio">With over 4 years of experience in the IT industry, Narayan leads our company with vision and expertise.</p>
+                </div>
+            </div>
+
+
+
+                 <div class="team-member" data-category="leadership">
+                <div class="member-image">
+                    <img src="../images/people_image/paras.jpeg" alt=" Narayan Bogati image younghub it solutions founder and ceo">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Parash Khadka</h3>
+                    <p class="member-position">Manager</p>
+                    <p class="member-bio">With over 3 years of experience in the IT industry, Paras leads system operations while managing projects and clients to drive successful outcomes.</p>
+                </div>
+            </div>
+
+
+
+
+                   <div class="team-member" data-category="leadership">
+                <div class="member-image">
+                    <img src="../images/people_image/nic.jpeg" alt=" Narayan Bogati image younghub it solutions founder and ceo">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Nischal GC</h3>
+                    <p class="member-position">Sales & Marketing Managers</p>
+                    <p class="member-bio">With over 2+ years of experience in the tech industry, Nischal  vision to help businesses leverage technology for growth.</p>
+                </div>
+            </div>
+
+
+<!--           
+             <div class="team-member" data-category="leadership">
+                <div class="member-image">
+                    <img src="../images/team_images/c4.jpg" alt="younghub it solutions image">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-twitter"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div> -->
+
+                <!-- <div class="member-info">
+                    <h3 class="member-name">Rabindra KC</h3>
+                    <p class="member-position">COO</p>
+                    <p class="member-bio">Rabindra oversees the day-to-day operations of Younghub IT Solutions, ensuring that our projects are delivered on time and exceed client expectations.</p>
+                </div>
+            </div>
+           
+
+
+            <div class="team-member" data-category="leadership">
+                <div class="member-image">
+                    <img src="../images/team_images/c7.jpg" alt="younghub it solutions photos">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-twitter"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="member-info">
+                    <h3 class="member-name">Anish Bista</h3>
+                    <p class="member-position">CTO</p>
+                    <p class="member-bio">Anish leads our technical strategy and ensures that we stay at the forefront of technological innovation in all our projects.</p>
+                </div>
+            </div>
+             -->
+            <!-- Development Team -->
+            <!-- <div class="team-member" data-category="development">
+                <div class="member-image">
+                    <img src="../images/people_image/home_random1.jpg" alt="younghub it solutions image">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-github"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Yubraj khatri</h3>
+                    <p class="member-position">Lead Developer</p>
+                    <p class="member-bio">yubraj leads our development team, specializing in full-stack development with expertise in React, Node.js, and cloud technologies.</p>
+                </div>
+            </div>
+            
+            <div class="team-member" data-category="development">
+                <div class="member-image">
+                    <img src="../images/team_images/c13.jpg" alt="younghub it solutions image">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-github"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Bhojendra GC</h3>
+                    <p class="member-position">Frontend Developer</p>
+                    <p class="member-bio">Bhojendra is our frontend specialist, creating beautiful and responsive user interfaces using the latest web technologies.</p>
+                </div>
+            </div>
+            
+            <div class="team-member" data-category="development">
+                <div class="member-image">
+                    <img src="../images/team_images/c15 .jpg" alt="bogati tecch image ">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-github"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Rakesh Yadav
+                    </h3>
+                    <p class="member-position">Backend Developer</p>
+                    <p class="member-bio">Rakesh specializes in backend development, building robust APIs and database architectures for our applications.</p>
+                </div>
+            </div>
+            
+            <div class="team-member" data-category="development">
+                <div class="member-image">
+                    <img src="../images/team_images/c3.jpg" alt="younghub it solutions images">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-github"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Dipak Shrestha</h3>
+                    <p class="member-position">Mobile App Developer</p>
+                    <p class="member-bio">Dipak develops cross-platform mobile applications using React Native and Flutter, creating seamless experiences across devices.</p>
+                </div>
+            </div>
+             -->
+            <!-- Design Team -->
+            <!-- <div class="team-member" data-category="design">
+                <div class="member-image">
+                    <img src="../images/people_image/rajendra_graphic_designer.jpg" alt="younghub it solutions">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-behance"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Rajendra Lamsal</h3>
+                    <p class="member-position">Creative Director</p>
+                    <p class="member-bio">Rajendra leads our design team, ensuring that all our visual outputs are aesthetically pleasing and aligned with brand identities.</p>
+                </div>
+            </div>
+            
+            <div class="team-member" data-category="design">
+                <div class="member-image">
+                    <img src="../images/team_images/c5.jpg" alt="younghub it solutions group image">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-behance"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Paras Basnet</h3>
+                    <p class="member-position">UI/UX Designer</p>
+                    <p class="member-bio">Paras specializes in creating intuitive user interfaces and experiences that delight users and achieve business goals.</p>
+                </div>
+            </div>
+            
+            <div class="team-member" data-category="design">
+                <div class="member-image">
+                    <img src="../images/team_images/c6.jpg" alt="Younghub IT Solutions group images">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-behance"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Kiran Limbu</h3>
+                    <p class="member-position">Graphic Designer</p>
+                    <p class="member-bio">Kiran creates stunning visual assets for our clients, from logos and brand identities to marketing materials and social media graphics.</p>
+                </div>
+            </div>
+             -->
+            <!-- Marketing Team -->
+            <!-- <div class="team-member" data-category="marketing">
+                <div class="member-image">
+                    <img src="../images/team_images/c8.jpg" alt="younghub it solutions image">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-twitter"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Aarav Yadav</h3>
+                    <p class="member-position">Marketing Director</p>
+                    <p class="member-bio">Aarav leads our marketing efforts, developing strategies that help our clients reach their target audiences and achieve their business goals.</p>
+                </div>
+            </div>
+            
+            <div class="team-member" data-category="marketing">
+                <div class="member-image">
+                    <img src="../images/team_images/c9.jpg" alt="younghub it solutions image">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-twitter"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Mohan KC</h3>
+                    <p class="member-position">SEO Specialist</p>
+                    <p class="member-bio">Mohan optimizes our clients' websites for search engines, helping them improve their online visibility and drive organic traffic.</p>
+                </div>
+            </div>
+            
+            <div class="team-member" data-category="marketing">
+                <div class="member-image">
+                    <img src="../images/team_images/c10.jpg" alt="Bikash Adhikari">
+                    <div class="member-social">
+                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="contact.html"><i class="fab fa-twitter"></i></a>
+                        <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Ritika Sharma</h3>
+                    <p class="member-position">Social Media Manager</p>
+                    <p class="member-bio">Ritika manages our clients' social media presence, creating engaging content and building communities around their brands.</p>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<!-- Join Team Section -->
+<section class="join-team">
+    <div class="container">
+        <div class="join-content">
+            <h2>Join Our Team</h2>
+            <p>We're always looking for talented individuals to join our growing team. If you're passionate about technology and innovation, we'd love to hear from you.</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3 class="benefit-title">Remote Work</h3>
+                    <p>Flexible work arrangements with remote options available.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="benefit-title">Learning & Growth</h3>
+                    <p>Continuous learning opportunities and career development.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="benefit-title">Collaborative Culture</h3>
+                    <p>Work in a supportive and collaborative environment.</p>
+                </div>
+            </div>
+            
+            <a href="careers.html" class="btn btn-large">View Open Positions</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Younghub IT Solutions</h3>
+            <p>Transforming ideas into digital reality with innovative solutions for your business.</p>
+            <div class="social-links">
+                <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="contact.html"><i class="fab fa-twitter"></i></a>
+                <a href="contact.html"><i class="fab fa-instagram"></i></a>
+                <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
+                <a href="contact.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h3>Our Services</h3>
+            <ul class="footer-links">
+                <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                <!-- <li><a href="services.html#photography-videography">Photography & Videography</a></li>
+                <li><a href="services.html#business-consulting">Business Consulting</a></li> -->
+                <li><a href="services.html#website-development">Website Development</a></li>
+                <!-- <li><a href="services.html#app-development">App Development</a></li> -->
+                <li><a href="services.html#graphic-designing">Graphic Designing</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <!-- <li><a href="blog.html">Blog</a></li> -->
+                <li><a href="careers.html">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Contact Info</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:info@younghubitsolutions.com">info@younghubitsolutions.com</a></p>
+            
+          <p><i class="fas fa-phone"></i> <a href="tel:+9779762519563">+977 9762519563</a></p>
+             <p><i class="fas fa-phone"></i> <a href="tel:+9779745913001">+977  9745913001</a></p>
+               
+          <!-- <div class="newsletter">
+                <h4>Subscribe to our newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div> -->
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Younghub IT Solutions. All Rights Reserved.</p>
+        <ul class="footer-bottom-links">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="sitemap.html">Sitemap</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+<!-- JavaScript -->
+<script>
+    // Navbar Toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Dropdown Toggle for Mobile
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+        if (window.scrollY > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+
+    // Back to Top Button Click
+    const backToTop = document.querySelector('.back-to-top');
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Team Category Filtering
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    const teamMembers = document.querySelectorAll('.team-member');
+
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            categoryTabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            
+            // Get category value
+            const category = tab.getAttribute('data-category');
+            
+            // Filter team members
+            teamMembers.forEach(member => {
+                if (category === 'all' || member.getAttribute('data-category') === category) {
+                    member.style.display = 'block';
+                } else {
+                    member.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Newsletter Form Submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to a server
+            alert('Thank you for subscribing to our newsletter!');
+            
+            // Reset form
+            newsletterForm.reset();
+        });
+    }
+</script>
+</body>
+</html>
