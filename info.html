@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>3D Robot Follow Mouse</title>
+
+<style>
+body{
+margin:0;
+overflow:hidden;
+background:#0f172a;
+font-family:Arial;
+}
+
+#title{
+position:absolute;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+color:white;
+font-size:28px;
+letter-spacing:2px;
+}
+</style>
+
+</head>
+<body>
+
+<div id="title">3D Robot Following Mouse</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0f172a);
+
+const camera = new THREE.PerspectiveCamera(
+75,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
+
+camera.position.z = 6;
+
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+
+
+// LIGHTS
+const light = new THREE.PointLight(0xffffff,1);
+light.position.set(5,5,5);
+scene.add(light);
+
+const light2 = new THREE.PointLight(0xffffff,0.5);
+light2.position.set(-5,3,5);
+scene.add(light2);
+
+const ambient = new THREE.AmbientLight(0x404040);
+scene.add(ambient);
+
+
+
+// ROBOT GROUP
+const robot = new THREE.Group();
+scene.add(robot);
+
+
+
+// HEAD
+const headGeometry = new THREE.BoxGeometry(2.5,2,2);
+const headMaterial = new THREE.MeshStandardMaterial({
+color:0x888888,
+metalness:0.8,
+roughness:0.3
+});
+
+const head = new THREE.Mesh(headGeometry,headMaterial);
+robot.add(head);
+
+
+
+// EYES FRAME
+const eyeFrameGeometry = new THREE.BoxGeometry(1.4,0.6,0.3);
+const eyeFrameMaterial = new THREE.MeshStandardMaterial({color:0x111111});
+
+const eyeFrame = new THREE.Mesh(eyeFrameGeometry,eyeFrameMaterial);
+eyeFrame.position.z = 1.1;
+head.add(eyeFrame);
+
+
+
+// EYES
+const eyeGeometry = new THREE.SphereGeometry(0.18,32,32);
+
+const eyeMaterial = new THREE.MeshStandardMaterial({
+color:0x00ffff,
+emissive:0x00ffff,
+emissiveIntensity:1
+});
+
+const eye1 = new THREE.Mesh(eyeGeometry,eyeMaterial);
+eye1.position.set(-0.35,0,0.2);
+eyeFrame.add(eye1);
+
+const eye2 = new THREE.Mesh(eyeGeometry,eyeMaterial);
+eye2.position.set(0.35,0,0.2);
+eyeFrame.add(eye2);
+
+
+
+// SIDE PANELS
+const sideGeometry = new THREE.CylinderGeometry(0.3,0.3,1.5,32);
+const sideMaterial = new THREE.MeshStandardMaterial({color:0x555555});
+
+const side1 = new THREE.Mesh(sideGeometry,sideMaterial);
+side1.rotation.z = Math.PI/2;
+side1.position.set(-1.4,0,0);
+head.add(side1);
+
+const side2 = new THREE.Mesh(sideGeometry,sideMaterial);
+side2.rotation.z = Math.PI/2;
+side2.position.set(1.4,0,0);
+head.add(side2);
+
+
+
+// ANTENNA
+const antennaGeometry = new THREE.CylinderGeometry(0.05,0.05,1);
+const antennaMaterial = new THREE.MeshStandardMaterial({color:0xff0000});
+
+const antenna = new THREE.Mesh(antennaGeometry,antennaMaterial);
+antenna.position.y = 1.4;
+head.add(antenna);
+
+
+
+// ANTENNA BALL
+const ballGeometry = new THREE.SphereGeometry(0.12,32,32);
+const ballMaterial = new THREE.MeshStandardMaterial({
+color:0xff0000,
+emissive:0xff0000,
+emissiveIntensity:1
+});
+
+const ball = new THREE.Mesh(ballGeometry,ballMaterial);
+ball.position.y = 0.6;
+antenna.add(ball);
+
+
+
+// MOUSE TRACK
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener("mousemove",(event)=>{
+
+mouseX = (event.clientX/window.innerWidth)*2 - 1;
+mouseY = -(event.clientY/window.innerHeight)*2 + 1;
+
+});
+
+
+
+// ANIMATE
+function animate(){
+
+requestAnimationFrame(animate);
+
+head.rotation.y += (mouseX*0.8 - head.rotation.y)*0.05;
+head.rotation.x += (mouseY*0.4 - head.rotation.x)*0.05;
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
+
+
+// RESPONSIVE
+window.addEventListener("resize",()=>{
+
+camera.aspect = window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+});
+
+</script>
+
+</body>
+</html>
